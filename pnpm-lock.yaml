@@ -10,6 +10,9 @@ devDependencies:
   '@nomiclabs/hardhat-ethers':
     specifier: ^2.2.3
     version: 2.2.3(ethers@5.7.2)(hardhat@2.14.1)
+  '@openzeppelin/contracts':
+    specifier: ^4.9.0
+    version: 4.9.0
   '@types/chai':
     specifier: ^4.3.5
     version: 4.3.5
@@ -1051,6 +1054,10 @@ packages:
       undici: 5.22.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@openzeppelin/contracts@4.9.0:
+    resolution: {integrity: sha512-DUP74AFGKlic2sQb/CmgrN2aUPMFGxRrmCTUxLHsiU2RzwWqVuMPZBxiAyvlff6Pea77uylAX6B5x9W6evEbhA==}
     dev: true
 
   /@resolver-engine/core@0.3.3:
