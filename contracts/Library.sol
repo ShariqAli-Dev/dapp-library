@@ -54,4 +54,28 @@ contract Library {
 
         emit BookBorrowed(_bookId, _userAddress);
     }
+
+    function returnBook(uint256 _bookId) external {
+        require(
+            !books[_bookId].isAvailable,
+            "Book is already retuned or not borrowed"
+        );
+
+        uint256[] storage borrowedBooks = users[msg.sender].borrowedBooks;
+        bool found = false;
+        for (uint256 i = 0; i < borrowedBooks.length; i++) {
+            if (borrowedBooks[i] == _bookId) {
+                found = true;
+                borrowedBooks[i] = borrowedBooks[borrowedBooks.length - 1];
+                borrowedBooks.pop();
+                break;
+            }
+        }
+
+        require(found, "Book not borrowed by the user");
+
+        books[_bookId].isAvailable = true;
+
+        emit BookReturned(_bookId, msg.sender);
+    }
 }
