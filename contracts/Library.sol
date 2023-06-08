@@ -83,6 +83,14 @@ contract Library {
         return books[_bookId];
     }
 
+    function getBooks() external view returns (Book[] memory) {
+        Book[] memory booksArray = new Book[](nextBookId - 1);
+        for (uint256 i = 0; i < (nextBookId - 1); i++) {
+            booksArray[i] = books[i];
+        }
+        return booksArray;
+    }
+
     function getUserBook(
         address _userAddress
     ) external view returns (uint256[] memory) {
