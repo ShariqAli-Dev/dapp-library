@@ -78,4 +78,8 @@ contract Library {
 
         emit BookReturned(_bookId, msg.sender);
     }
+
+    function getBook(uint256 _bookId) external view returns (Book memory) {
+        return books[_bookId];
+    }
 }
