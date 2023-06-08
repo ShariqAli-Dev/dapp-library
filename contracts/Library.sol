@@ -82,4 +82,10 @@ contract Library {
     function getBook(uint256 _bookId) external view returns (Book memory) {
         return books[_bookId];
     }
+
+    function getUserBook(
+        address _userAddress
+    ) external view returns (uint256[] memory) {
+        return users[_userAddress].borrowedBooks;
+    }
 }
