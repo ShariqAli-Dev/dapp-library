@@ -41,4 +41,17 @@ contract Library {
         books[nextBookId] = newBook;
         nextBookId++;
     }
+
+    function borrowBook(uint256 _bookId, address _userAddress) external {
+        require(
+            users[msg.sender].borrowedBooks.length < 3,
+            "Book limit reached"
+        );
+        require(books[_bookId].isAvailable, "Book is not available");
+
+        users[_userAddress].borrowedBooks.push(_bookId);
+        books[_bookId].isAvailable = false;
+
+        emit BookBorrowed(_bookId, _userAddress);
+    }
 }
